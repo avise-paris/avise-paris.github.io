@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mode d'emploi · Avisé</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="espace/style.css"><style>main{max-width:780px}main h2{margin-top:34px}table{width:100%;border-collapse:collapse;font-size:15px}td,th{border-top:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:top}code{background:var(--bg2);padding:2px 6px;border-radius:6px;font-size:.9em}li{margin:6px 0}</style></head>
+<body><header class="top"><div class="in"><a class="logo" href="./"><span>Avis<b>é</b></span></a><a class="btn ghost sm" href="espace/admin.html">Admin (démo)</a><a class="btn ghost sm" href="espace/">Espace client (démo)</a></div></header>
+<main><h1>Avisé : mise en ligne du site et de l'espace client</h1>
+<p>Tout est gratuit pour démarrer. Compte environ 1 heure la première fois.</p>
+<h2>Ce que contient ce dossier</h2>
+<table>
+<thead>
+<tr>
+<th>Fichier</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index.html</code></td>
+<td>Le site vitrine</td>
+</tr>
+<tr>
+<td><code>mentions-legales.html</code>, <code>confidentialite.html</code></td>
+<td>Pages légales (compléter les [crochets])</td>
+</tr>
+<tr>
+<td><code>espace/index.html</code></td>
+<td>L'espace client : le patron se connecte et voit ses rapports</td>
+</tr>
+<tr>
+<td><code>espace/admin.html</code></td>
+<td>Ton interface : clients, rapports mensuels, réponses mises en avant</td>
+</tr>
+<tr>
+<td><code>espace/config.js</code></td>
+<td>Les 2 clés Supabase à coller</td>
+</tr>
+<tr>
+<td><code>supabase/schema.sql</code></td>
+<td>La base de données et ses règles de sécurité</td>
+</tr>
+<tr>
+<td><code>_redirects</code></td>
+<td>Les liens des cartes sans contact (<code>/r/nom-du-resto</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Tant que <code>config.js</code> contient des XXXX, l'espace tourne en mode démo, avec des données d'exemple.</p>
+<h2>1. La base de données (Supabase)</h2>
+<ol>
+<li>Crée un compte sur supabase.com, puis « New project ». Choisis une région en Europe (par exemple Paris ou Francfort).</li>
+<li>Ouvre « SQL Editor », puis « New query ». Colle tout le fichier <code>supabase/schema.sql</code>, en remplaçant d'abord <code>TON_EMAIL@exemple.fr</code> par ton e-mail. Clique sur « Run ».</li>
+<li>Dans « Authentication », puis « Sign In / Providers », vérifie que la connexion par e-mail est activée. Désactive « Allow new users to sign up » : seuls les clients que tu invites peuvent avoir un compte.</li>
+<li>Dans « Authentication », puis « Users », clique sur « Add user ». Crée ton compte avec ton e-mail (le même que dans le SQL) et un mot de passe.</li>
+<li>Dans « Project Settings », puis « API », copie « Project URL » et la clé « anon public » dans <code>espace/config.js</code>. Ne colle jamais la clé « service_role ».</li>
+</ol>
+<p><strong>À savoir :</strong> sur l'offre gratuite, Supabase met le projet en pause s'il n'y a presque aucune activité pendant une semaine. Tes connexions à l'admin chaque semaine suffisent à l'éviter. S'il se met en pause, un bouton « Resume project » le relance sans perte de données. Quand tu auras plusieurs clients, l'offre Pro (25 $ par mois) supprime ces pauses.</p>
+<h2>2. La mise en ligne (Cloudflare Pages)</h2>
+<p>On n'utilise pas l'offre gratuite de Vercel : elle est réservée à un usage personnel et non commercial.</p>
+<ol>
+<li>Crée un compte sur cloudflare.com, puis va dans « Workers &amp; Pages », « Create », « Pages », « Upload assets ».</li>
+<li>Glisse le dossier entier, et nomme le projet <code>avise</code>. Le site est alors en ligne sur <code>avise.pages.dev</code>.</li>
+<li>Pour avoir ton propre nom de domaine : achète-le (environ 10 € par an, par exemple avise.fr s'il est libre), puis ajoute-le dans « Custom domains ».</li>
+<li>Dans Supabase, va dans « Authentication », puis « URL Configuration ». Mets ton adresse (par exemple <code>https://avise.fr</code>) dans « Site URL » et ajoute <code>https://avise.fr/espace/</code> dans « Redirect URLs ». C'est ce qui fait marcher « Mot de passe oublié ».</li>
+</ol>
+<h2>3. Le formulaire d'audit (Formspree)</h2>
+<ol>
+<li>Crée un compte gratuit sur formspree.io, puis un nouveau formulaire. Copie l'adresse <code>https://formspree.io/f/…</code>.</li>
+<li>Dans <code>index.html</code>, colle-la dans <code>const FORM_ENDPOINT="";</code>, puis remets le site en ligne. Les demandes d'audit arrivent alors dans ta boîte mail.</li>
+</ol>
+<h2>4. Ajouter un client</h2>
+<ol>
+<li>Dans <code>/espace/admin.html</code>, remplis « Nouveau client » : le nom, la ville, l'e-mail du patron et la formule.</li>
+<li>Dans Supabase, va dans « Authentication », puis « Users », et clique sur « Invite user » avec le même e-mail. Le patron reçoit un lien pour choisir son mot de passe.</li>
+<li>Ajoute son lien de carte dans <code>_redirects</code>, sur une ligne <code>/r/nom-du-resto  lien-google  302</code>, puis remets le site en ligne. Programme ses cartes NFC avec <code>https://avise.fr/r/nom-du-resto</code>.</li>
+</ol>
+<h2>5. Chaque fin de mois</h2>
+<ol>
+<li>Dans l'admin, ouvre le client et clique sur « + Nouveau mois ». Les concurrents du mois précédent sont recopiés automatiquement.</li>
+<li>Remplis les chiffres relevés sur la fiche Google : note, nombre total d'avis, nouveaux avis, % de réponses, publications, photos, signalements.</li>
+<li>Mets à jour la note et le nombre d'avis des concurrents.</li>
+<li>Écris « Le mot d'Avisé » en 2 ou 3 phrases (je peux te le rédiger à partir des chiffres).</li>
+<li>Ajoute 2 ou 3 réponses mises en avant, avec seulement le prénom et l'initiale de l'auteur, et un extrait court de l'avis.</li>
+<li>Coche « Publié » et enregistre. Le patron voit son rapport, qu'il peut aussi imprimer en PDF.</li>
+</ol>
+<h2>Sécurité</h2>
+<ul>
+<li>Chaque patron ne voit que les établissements liés à son e-mail, et seulement les rapports publiés. Ce sont les règles de la base de données qui l'imposent, pas l'affichage.</li>
+<li>Seuls les e-mails de la table <code>admins</code> peuvent modifier quoi que ce soit.</li>
+<li>Pour ajouter un associé comme administrateur : <code>insert into admins (email) values ('son@email.fr');</code></li>
+</ul></main></body></html>
