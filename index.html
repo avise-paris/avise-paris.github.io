@@ -115,7 +115,7 @@ input[type=range]{width:100%;accent-color:var(--red);min-height:40px}
 .plan.mid li{border-color:color-mix(in srgb,var(--bg) 18%,transparent)}.plan.mid .btn{background:var(--red)}
 .plan .tag{font-size:14.5px;color:var(--soft);min-height:44px;margin-bottom:6px}
 .plan h3{font-size:34px;margin:0 0 6px}
-.price{font:italic 400 18px Fraunces,serif;margin-bottom:12px;color:var(--red)}.plan.mid .price{color:inherit;opacity:.75}
+.price{font:italic 400 18px Fraunces,serif;margin-bottom:12px;color:var(--red)}.plan.mid .price{color:inherit}
 .plan ul{list-style:none;padding:0;margin:8px 0 26px;flex:1}
 .plan li{padding:11px 0 11px 28px;border-top:1px solid var(--line);position:relative;font-size:15px}
 .plan li::before{content:"";position:absolute;left:3px;top:18px;width:11px;height:6px;border-left:2px solid var(--red);border-bottom:2px solid var(--red);transform:rotate(-45deg)}
@@ -224,17 +224,27 @@ nav a.l.on{color:var(--ink)}nav a.l.on::after{content:"";display:block;height:1.
 .navlog svg{width:16px;height:16px}
 @media(max-width:980px){.egrid{grid-template-columns:minmax(0,1fr)}.device iframe{height:560px}}
 @media(max-width:620px){.navlog span{display:none}.navlog{padding:9px}}
+.skip{position:absolute;left:-999px;top:8px;z-index:60;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px}.skip:focus{left:12px}
+.who{border-bottom:1px solid var(--line)}.who .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding-top:20px;padding-bottom:20px;font-size:15px}
+.who b{font:600 19px Fraunces,serif;margin-right:4px}.who span{padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-weight:600;font-size:14px}
+.who em{font-style:normal;color:var(--soft);font-size:14px;margin-left:auto}
+.amt{font:600 46px/1 Fraunces,serif;font-style:normal;color:var(--ink)}.plan.mid .amt{color:var(--bg)}.price small{font:500 13.5px Inter,sans-serif;opacity:.8}
+.xp{font:600 15px Inter,sans-serif;color:var(--red);white-space:nowrap;margin-left:6px}
+.cmp.vs td{font-size:14.5px}.cmp.vs th[scope=row]{font-weight:600}
+@media(max-width:620px){.who em{margin-left:0;width:100%}.cmp.vs{min-width:560px;table-layout:auto}}
 /* reveal */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}.rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.mq div{animation:none}}
 @media(max-width:980px){.hgrid,.ngrid,.calc,.fgrid,.cols{grid-template-columns:minmax(0,1fr)}.plans,.grid,.rules{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.step::after{display:none}nav a.l{display:none}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.facts,.extras,.fcols,.row2,.steps{grid-template-columns:minmax(0,1fr)}.feed{min-height:470px}.bar{grid-template-columns:6.6em minmax(0,1fr) 2.6em}nav .btn{display:none}}
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Avisé", "description": "Gestion des avis Google et de la présence en ligne des restaurants et commerces : réponse à tous les avis, récolte de vrais avis, retrait des avis abusifs, fiche Google à jour.", "areaServed": ["Saint-Mandé", "Vincennes", "Paris 11e", "Paris 12e", "Paris 20e", "Montreuil", "Nogent-sur-Marne"], "priceRange": "29 € – 79 € / mois", "makesOffer": [{"@type": "Offer", "name": "Essentiel", "price": "29", "priceCurrency": "EUR"}, {"@type": "Offer", "name": "Pro", "price": "49", "priceCurrency": "EUR"}, {"@type": "Offer", "name": "Premium", "price": "79", "priceCurrency": "EUR"}]}</script>
 </head>
 <body>
+<a class="skip" href="#offre">Aller au contenu</a>
 <nav><div class="wrap">
   <a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="var(--red)"/><path d="M16 7.5l2.5 5.3 5.8.7-4.3 4 1.1 5.7L16 20.4l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z" fill="#e8b53a"/></svg><span>Avis<span style="color:var(--red)">é</span></span></a>
-  <a class="l" href="#offre">L'offre</a><a class="l" href="#methode">Méthode</a><a class="l" href="#formules">Formules</a><a class="l" href="#espace">Espace client</a><a class="l" href="#faq">Questions</a>
+  <a class="l" href="#offre">L'offre</a><a class="l" href="#retrait">Avis injustes</a><a class="l" href="#formules">Tarifs</a><a class="l" href="#faq">Questions</a>
   <a class="navlog" href="espace/index.html" aria-label="Espace client : se connecter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Espace client</span></a>
   <button class="tog" id="tog" aria-label="Changer de thème"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
   <a class="btn" href="#audit">Réserver mon audit</a>
@@ -247,7 +257,7 @@ nav a.l.on{color:var(--ink)}nav a.l.on::after{content:"";display:block;height:1.
     <p class="lead">Avisé gère vos avis Google <b style="color:var(--ink)">à votre place</b>, chaque mois, pour un tarif fixe. Vous gardez la cuisine, on garde les avis.</p>
     <ul class="chips"><li>Réponse à tous vos avis</li><li>Retrait des avis abusifs</li><li>Récolte de vrais avis</li><li>Fiche Google à jour</li><li>Rapport mensuel</li></ul>
     <div class="cta" style="margin-top:22px"><a class="btn" href="#audit">Réserver mon audit gratuit</a><a class="btn ghost" href="#methode">Comment ça marche</a></div>
-    <div class="proof"><span class="stars">★★★★★</span>Zéro faux avis. Vous validez, on s'occupe du reste.</div>
+    <div class="proof"><span class="stars">★★★★★</span>Dès 29 € par mois · premier mois dès 19 € · sans engagement long</div>
   </div>
   <div class="feed rv" aria-live="polite">
     <div class="fhead"><span class="live"><i></i>Vos avis, en direct</span><span id="fcount">Avis 1 / 4</span></div>
@@ -258,24 +268,27 @@ nav a.l.on{color:var(--ink)}nav a.l.on::after{content:"";display:block;height:1.
 
 <div class="mq" aria-hidden="true"><div id="mq"></div></div>
 <section class="prom"><div class="wrap pgrid"><div><b>100 %</b>de vos avis reçoivent une réponse</div><div><b>24 h</b>maximum pour répondre à un avis négatif</div><div><b>1 rapport</b>clair chaque mois, dans votre espace</div><div><b>0 mot de passe</b>demandé : vous restez propriétaire</div></div></section>
+<section class="who"><div class="wrap"><b>Pour qui ?</b><span>Restaurants</span><span>Bars et cafés</span><span>Boulangeries</span><span>Commerces de quartier</span><em>Saint-Mandé · Vincennes · Paris 11e, 12e, 20e · Montreuil · Nogent</em></div></section>
 
 
-<section class="band" id="offre"><div class="wrap">
-  <div class="rv"><div class="kick">01 · L'offre</div><h2>Ce qu'on fait pour vous, <em>chaque mois.</em></h2>
+<section class="band" id="probleme"><div class="wrap">
+  <div class="rv"><div class="kick">01 · Le constat</div><h2>Vos clients lisent vos avis <em>avant</em> de pousser la porte.</h2>
+  <p class="lead">Un avis négatif n'est pas le problème. Un avis resté sans réponse, si : c'est un client qui hésite, puis qui va voir à côté.</p></div>
+  <div class="facts">
+    <div class="fact rv"><b data-n="50" data-p="+ de " data-s=" %">+ de 50 %</b>des Français consultent les avis avant d'aller dans un point de vente, jusqu'à 70 % chez les 25-34 ans.<small>Source : étude Partoo, Journal du Net</small></div>
+    <div class="fact rv"><b data-n="100">100</b>avis : c'est le seuil à partir duquel la confiance des clients s'installe vraiment.<small>Source : étude Geolid, Journal du Net</small></div>
+    <div class="fact rv"><b data-n="10" data-s=" / mois">10 / mois</b>La régularité compte plus que le volume : mieux vaut 10 avis chaque mois qu'une rafale.<small>Source : étude Geolid, Journal du Net</small></div>
+  </div>
+</div></section>
+
+<section class="band alt" id="offre"><div class="wrap">
+  <div class="rv"><div class="kick">02 · L'offre</div><h2>Ce qu'on fait pour vous, <em>chaque mois.</em></h2>
   <p class="lead">Quatre missions, tenues toute l'année. Vous n'avez rien à installer et rien à apprendre.</p></div>
   <div class="pillars">
     <article class="pil rv"><span class="pn">1</span><h3>On répond à tous vos avis</h3><p>Une réponse personnalisée pour chaque avis, positif ou négatif, dans la langue du client.</p><ul><li><b>Quand</b> sous 24 h pour un avis négatif</li><li><b>Combien</b> 100 % de vos avis</li><li><b>Vous</b> validez au début, d'un SMS</li></ul></article>
     <article class="pil rv"><span class="pn">2</span><h3>On récolte de vrais avis</h3><p>Des cartes sans contact sur vos tables : le client approche son téléphone et laisse son avis en deux secondes.</p><ul><li><b>Quand</b> en continu, chaque service</li><li><b>Combien</b> autant que vos clients le veulent</li><li><b>Résultat</b> des avis authentiques qui font monter votre note</li></ul></article>
     <article class="pil rv"><span class="pn">3</span><h3>On soigne votre fiche</h3><p>Horaires, jours fériés, menu, photos, description, et une publication chaque semaine pour garder la fiche vivante.</p><ul><li><b>Quand</b> refonte au départ, puis chaque semaine</li><li><b>Où</b> Google, et selon la formule Apple Plans, TripAdvisor, Bing, Waze</li></ul></article>
     <article class="pil rv"><span class="pn">4</span><h3>On vous rend des comptes</h3><p>Un rapport clair dans votre espace client : votre note, vos nouveaux avis, nos réponses, votre place dans la rue.</p><ul><li><b>Quand</b> chaque mois</li><li><b>Temps de lecture</b> deux minutes</li><li><b>Accès</b> identifiant et mot de passe</li></ul></article>
-  </div>
-</div></section>
-
-<section class="band alt" id="avant"><div class="wrap">
-  <div class="rv"><div class="kick">02 · Avant, après</div><h2>Ce qui change <em>pour vous.</em></h2></div>
-  <div class="ba rv">
-    <div class="col bef"><h3>Sans Avisé</h3><ul><li>Des avis qui attendent une réponse depuis des semaines</li><li>Vous répondez le soir sur votre téléphone, quand vous y pensez</li><li>Des horaires faux un jour férié, des clients devant porte close</li><li>Des photos qui datent de l'ouverture</li><li>Aucune idée de votre place face aux voisins</li></ul></div>
-    <div class="col aft"><h3>Avec Avisé</h3><ul><li>Chaque avis a sa réponse, les négatifs sous 24 h</li><li>Vous ne touchez plus à votre téléphone pour ça</li><li>Des horaires justes, jours fériés compris</li><li>Une fiche vivante : photos récentes, une publication par semaine</li><li>Un rapport chaque mois, face aux établissements de votre rue</li></ul></div>
   </div>
 </div></section>
 
@@ -291,13 +304,11 @@ nav a.l.on{color:var(--ink)}nav a.l.on::after{content:"";display:block;height:1.
   <div class="mot rv"><b>Ce qu'on peut faire retirer</b><ul><li>Faux avis, client jamais venu</li><li>Concurrent ou ancien salarié</li><li>Insultes, harcèlement, haine</li><li>Hors sujet (politique, voisinage…)</li><li>Infos personnelles, nom d'un employé</li><li>Propos obscènes ou menaces</li><li>Vague d'avis coordonnée</li><li>Chantage à l'avis négatif</li></ul></div>
 </div></section>
 
-<section class="band" id="probleme"><div class="wrap">
-  <div class="rv"><div class="kick">04 · Le constat</div><h2>Vos clients lisent vos avis <em>avant</em> de pousser la porte.</h2>
-  <p class="lead">Un avis négatif n'est pas le problème. Un avis resté sans réponse, si : c'est un client qui hésite, puis qui va voir à côté.</p></div>
-  <div class="facts">
-    <div class="fact rv"><b data-n="50" data-p="+ de " data-s=" %">+ de 50 %</b>des Français consultent les avis avant d'aller dans un point de vente, jusqu'à 70 % chez les 25-34 ans.<small>Source : étude Partoo, Journal du Net</small></div>
-    <div class="fact rv"><b data-n="100">100</b>avis : c'est le seuil à partir duquel la confiance des clients s'installe vraiment.<small>Source : étude Geolid, Journal du Net</small></div>
-    <div class="fact rv"><b data-n="10" data-s=" / mois">10 / mois</b>La régularité compte plus que le volume : mieux vaut 10 avis chaque mois qu'une rafale.<small>Source : étude Geolid, Journal du Net</small></div>
+<section class="band" id="avant"><div class="wrap">
+  <div class="rv"><div class="kick">04 · Avant, après</div><h2>Ce qui change <em>pour vous.</em></h2></div>
+  <div class="ba rv">
+    <div class="col bef"><h3>Sans Avisé</h3><ul><li>Des avis qui attendent une réponse depuis des semaines</li><li>Vous répondez le soir sur votre téléphone, quand vous y pensez</li><li>Des horaires faux un jour férié, des clients devant porte close</li><li>Des photos qui datent de l'ouverture</li><li>Aucune idée de votre place face aux voisins</li></ul></div>
+    <div class="col aft"><h3>Avec Avisé</h3><ul><li>Chaque avis a sa réponse, les négatifs sous 24 h</li><li>Vous ne touchez plus à votre téléphone pour ça</li><li>Des horaires justes, jours fériés compris</li><li>Une fiche vivante : photos récentes, une publication par semaine</li><li>Un rapport chaque mois, face aux établissements de votre rue</li></ul></div>
   </div>
 </div></section>
 
@@ -315,7 +326,7 @@ nav a.l.on{color:var(--ink)}nav a.l.on::after{content:"";display:block;height:1.
   </div>
 </div></section>
 
-<section class="band"><div class="wrap ngrid">
+<section class="band" id="recolte"><div class="wrap ngrid">
   <div class="stage rv" id="stage"><div class="nfc" id="nfc">
     <small>Sur votre table</small>
     <svg class="w" viewBox="0 0 80 80" fill="none" stroke="#e8b53a" stroke-width="4" stroke-linecap="round"><path d="M34 26a20 20 0 0 1 0 28"/><path d="M44 18a32 32 0 0 1 0 44"/><path d="M54 10a44 44 0 0 1 0 60"/><circle cx="24" cy="40" r="5" fill="#e8b53a" stroke="none"/></svg>
@@ -336,8 +347,7 @@ nav a.l.on{color:var(--ink)}nav a.l.on::after{content:"";display:block;height:1.
   </div>
 </div></section>
 
-
-<section class="band alt"><div class="wrap">
+<section class="band alt" id="temps"><div class="wrap">
   <div class="calc rv">
     <div>
       <div class="kick">07 · Votre temps</div>
@@ -352,33 +362,28 @@ nav a.l.on{color:var(--ink)}nav a.l.on::after{content:"";display:block;height:1.
 
 <section class="band" id="formules"><div class="wrap">
   <div class="rv"><div class="kick">08 · Les formules</div><h2>Choisissez votre formule. <em>Changez quand vous voulez.</em></h2>
-  <p class="lead">Sans engagement de longue durée. Le tarif est fixé après l'audit gratuit, selon votre établissement.</p></div>
+  <p class="lead">Un prix fixe chaque mois, sans engagement de longue durée. Offre de lancement : votre premier mois à prix réduit.</p></div>
   <div class="plans" id="plans"></div>
   <div class="cmpw rv"><table class="cmp" id="cmp"></table></div>
+  <div class="rv" style="margin-top:56px"><h3 style="font-size:30px">Pourquoi Avisé plutôt que…</h3></div>
+  <div class="cmpw rv"><table class="cmp vs"><thead><tr><th scope="col"></th><th scope="col">Le faire vous-même</th><th scope="col">Un logiciel d'avis</th><th scope="col" class="hl">Avisé</th></tr></thead><tbody>
+    <tr><th scope="row">Qui répond aux avis ?</th><td>Vous</td><td>Vous, avec un outil</td><td class="hl"><b>Nous</b></td></tr>
+    <tr><th scope="row">Votre temps chaque mois</th><td>Plusieurs heures</td><td>Plusieurs heures</td><td class="hl"><b>Quelques minutes</b></td></tr>
+    <tr><th scope="row">Retrait des avis abusifs</th><td>Seul face à Google</td><td>Rarement inclus</td><td class="hl"><b>Inclus, jusqu'au bout</b></td></tr>
+    <tr><th scope="row">Cartes sans contact sur les tables</th><td>À fabriquer</td><td>Parfois en option</td><td class="hl"><b>Fournies et installées</b></td></tr>
+    <tr><th scope="row">Quelqu'un qui passe vous voir</th><td>–</td><td>–</td><td class="hl"><b>Oui, dans votre quartier</b></td></tr>
+    <tr><th scope="row">Prix</th><td>Votre temps</td><td>Souvent dès 39 € / mois</td><td class="hl"><b>Dès 29 € / mois</b></td></tr>
+  </tbody></table></div>
   <div class="extras ex3">
-    <div class="extra rv"><h3>Grand nettoyage de vos avis</h3><p>On passe en revue tous vos avis existants et on lance la procédure de retrait pour chacun de ceux qui enfreignent les règles. Prestation unique.</p></div>
-    <div class="extra rv"><h3>Site internet ou menu en ligne</h3><p>Pas de site ? On vous en fait un, rapide et soigné, avec votre menu, vos horaires et vos photos. Prestation unique.</p></div>
-    <div class="extra rv"><h3>Présentoir de comptoir sans contact</h3><p>Pour la caisse ou l'entrée : le client approche son téléphone et arrive sur votre page d'avis. Prestation unique.</p></div>
+    <div class="extra rv"><h3>Grand nettoyage de vos avis <span class="xp">49 €</span></h3><p>On passe en revue tous vos avis existants et on lance la procédure de retrait pour chacun de ceux qui enfreignent les règles. Prestation unique.</p></div>
+    <div class="extra rv"><h3>Site internet ou menu en ligne <span class="xp">sur devis</span></h3><p>Pas de site ? On vous en fait un, rapide et soigné, avec votre menu, vos horaires et vos photos. Prestation unique.</p></div>
+    <div class="extra rv"><h3>Présentoir de comptoir sans contact <span class="xp">25 €</span></h3><p>Pour la caisse ou l'entrée : le client approche son téléphone et arrive sur votre page d'avis. Prestation unique.</p></div>
   </div>
 </div></section>
 
-<section class="band alt" id="regles"><div class="wrap">
-  <div class="rv"><div class="kick">09 · Nos garanties</div><h2>Votre fiche est <em>entre de bonnes mains.</em></h2>
-  <p class="lead">Tout est fait dans les règles de Google et de la loi : votre fiche ne risque rien, et vous gardez le contrôle.</p></div>
-  <div class="rules">
-    <div class="rv"><b>100 % de vrais avis</b>Les avis de vos vrais clients : une note solide, qui tient dans le temps et ne risque aucune sanction.</div>
-    <div class="rv"><b>Vous restez propriétaire</b>Votre fiche reste à votre nom. Vous nous retirez l'accès en un clic, sans jamais partager de mot de passe.</div>
-    <div class="rv"><b>Vous gardez le dernier mot</b>Au départ, vous validez nos réponses d'un simple SMS. Ensuite, on s'occupe de tout.</div>
-    <div class="rv"><b>Sans engagement long</b>Vous arrêtez quand vous voulez, et on vous rend la main sur votre fiche sous 7 jours.</div>
-    <div class="rv"><b>Un seul interlocuteur</b>Une personne qui connaît votre établissement, joignable directement, qui passe vous voir.</div>
-    <div class="rv"><b>Tout est transparent</b>Votre fiche Google reste gratuite : vous payez uniquement notre travail, détaillé sur chaque facture.</div>
-  </div>
-  <p class="discl rv">Avisé est un prestataire indépendant de Google. La fiche d'établissement Google est un service gratuit ; Avisé facture uniquement son travail de gestion, indiqué par écrit dans le devis et sur chaque facture.</p>
-</div></section>
-
-<section class="band" id="espace"><div class="wrap">
+<section class="band alt" id="espace"><div class="wrap">
   <div class="egrid">
-    <div class="rv"><div class="kick">10 · Votre espace client</div><h2>Voilà <em>votre interface.</em></h2>
+    <div class="rv"><div class="kick">09 · Votre espace client</div><h2>Voilà <em>votre interface.</em></h2>
       <p class="lead">Avec l'abonnement, vous avez votre propre espace sécurisé, avec identifiant et mot de passe. Toutes vos données y sont, mises à jour chaque mois.</p>
       <ul class="checks">
         <li><b>Votre note et vos avis</b>, avec l'évolution mois par mois.</li>
@@ -393,6 +398,20 @@ nav a.l.on{color:var(--ink)}nav a.l.on::after{content:"";display:block;height:1.
   </div>
 </div></section>
 
+<section class="band" id="regles"><div class="wrap">
+  <div class="rv"><div class="kick">10 · Nos garanties</div><h2>Votre fiche est <em>entre de bonnes mains.</em></h2>
+  <p class="lead">Tout est fait dans les règles de Google et de la loi : votre fiche ne risque rien, et vous gardez le contrôle.</p></div>
+  <div class="rules">
+    <div class="rv"><b>100 % de vrais avis</b>Les avis de vos vrais clients : une note solide, qui tient dans le temps et ne risque aucune sanction.</div>
+    <div class="rv"><b>Vous restez propriétaire</b>Votre fiche reste à votre nom. Vous nous retirez l'accès en un clic, sans jamais partager de mot de passe.</div>
+    <div class="rv"><b>Vous gardez le dernier mot</b>Au départ, vous validez nos réponses d'un simple SMS. Ensuite, on s'occupe de tout.</div>
+    <div class="rv"><b>Sans engagement long</b>Vous arrêtez quand vous voulez, et on vous rend la main sur votre fiche sous 7 jours.</div>
+    <div class="rv"><b>Un seul interlocuteur</b>Une personne qui connaît votre établissement, joignable directement, qui passe vous voir.</div>
+    <div class="rv"><b>Tout est transparent</b>Votre fiche Google reste gratuite : vous payez uniquement notre travail, détaillé sur chaque facture.</div>
+  </div>
+  <p class="discl rv">Avisé est un prestataire indépendant de Google. La fiche d'établissement Google est un service gratuit ; Avisé facture uniquement son travail de gestion, indiqué par écrit dans le devis et sur chaque facture.</p>
+</div></section>
+
 <section class="band alt" id="audit"><div class="wrap fgrid">
   <div class="rv"><div class="kick">11 · Audit gratuit</div><h2>Réservez votre audit. <em>C'est gratuit.</em></h2>
   <p class="lead">Note, avis sans réponse, photos, horaires, présence sur les autres plateformes et comparaison avec vos trois voisins les plus proches. On vous l'apporte imprimé, et on en parle 15 minutes en dehors du service.</p>
@@ -400,6 +419,7 @@ nav a.l.on{color:var(--ink)}nav a.l.on::after{content:"";display:block;height:1.
   <form class="form rv" id="auditf">
     <div class="row2"><div><label for="n">Établissement</label><input id="n" name="etablissement" required></div><div><label for="v">Ville ou quartier</label><input id="v" name="ville" required></div></div>
     <label for="t">Type d'établissement</label><select id="t" name="type"><option>Restaurant</option><option>Bar, café</option><option>Boulangerie, pâtisserie</option><option>Commerce</option><option>Autre</option></select>
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
     <label for="c">Téléphone ou e-mail</label><input id="c" name="contact" required>
     <label for="m">Un message ? (facultatif)</label><textarea id="m" name="message"></textarea>
     <p class="note" style="margin-top:12px">Vos coordonnées servent uniquement à vous contacter pour l'audit. Elles sont conservées 3 ans au plus sans suite de votre part, et vous pouvez demander leur suppression à tout moment.</p>
@@ -419,8 +439,8 @@ nav a.l.on{color:var(--ink)}nav a.l.on::after{content:"";display:block;height:1.
   <div class="fcols">
     <div><b>Avisé</b><p style="margin-top:8px">Gestion des avis et de la présence en ligne des restaurants et commerces de Saint-Mandé, Vincennes et Paris Est.</p></div>
     <div><b>Liens</b><p style="margin-top:8px"><a href="espace/index.html">Espace client</a><br><a href="mentions-legales.html">Mentions légales</a><br><a href="confidentialite.html">Données personnelles</a></p></div>
-    <div><b>Contact</b><p style="margin-top:8px">[Téléphone]<br>[E-mail]<br>On passe vous voir en dehors du service.</p></div>
-    <div><b>Mentions légales</b><p style="margin-top:8px">Éditeur : [Prénom Nom] EI, Avisé. SIREN [à compléter]. [Adresse]. Directeur de la publication : [Prénom Nom]. Hébergeur : Vercel Inc., San Francisco, États-Unis. TVA non applicable, art. 293 B du CGI. Les marques citées appartiennent à leurs propriétaires. Avisé n'est affilié à aucune plateforme d'avis.</p></div>
+    <div><b>Contact</b><p style="margin-top:8px" id="fcontact"><a href="#audit">Demandez votre audit gratuit</a> : on vous recontacte sous 48 h et on passe vous voir en dehors du service.</p></div>
+    <div><b>Informations</b><p style="margin-top:8px">Avisé est un prestataire indépendant, non affilié à Google ni aux plateformes citées, dont les marques appartiennent à leurs propriétaires.<br><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Données personnelles</a></p></div>
   </div>
 </div></footer>
 
@@ -454,10 +474,10 @@ async function run(){
 run();
 
 
-const plans=[{n:"Essentiel",t:"Ne plus laisser un seul avis sans réponse",k:["Réponses à tous vos avis","Alertes et signalements","Rapport mensuel"]},
- {n:"Pro",t:"Récolter de vrais avis et soigner la fiche",mid:1,k:["Tout l'Essentiel","Cartes de table sans contact","Fiche refaite + 1 post par semaine"]},
- {n:"Premium",t:"Être présent partout, impeccable partout",k:["Tout le Pro","Photos sur place","Apple Plans, TripAdvisor, Bing, Waze"]}];
-$('plans').innerHTML=plans.map(p=>`<div class="plan rv${p.mid?' mid':''}">${p.mid?'<span class="badge">Le plus complet pour récolter</span>':''}<h3>${p.n}</h3><div class="tag">${p.t}</div><div class="price">Tarif fixe, après audit gratuit</div><ul>${p.k.map(x=>`<li class="${x.startsWith('Tout ')?'inc':''}">${x}</li>`).join('')}</ul><a class="btn${p.mid?'':' ghost'}" href="#audit">Choisir ${p.n}</a></div>`).join('');
+const plans=[{n:"Essentiel",t:"Ne plus laisser un seul avis sans réponse",p:29,f:19,k:["Réponses à tous vos avis, toutes langues","Retrait des avis abusifs","Rapport mensuel et espace client"]},
+ {n:"Pro",t:"Récolter de vrais avis et soigner la fiche",mid:1,p:49,f:29,k:["Tout l'Essentiel","Cartes de table sans contact","Fiche refaite + 1 publication par semaine"]},
+ {n:"Premium",t:"Être présent partout, impeccable partout",p:79,f:49,k:["Tout le Pro","Photos sur place","Apple Plans, TripAdvisor, Bing, Waze, TheFork"]}];
+$('plans').innerHTML=plans.map(p=>`<div class="plan rv${p.mid?' mid':''}">${p.mid?'<span class="badge">Le plus complet pour récolter</span>':''}<h3>${p.n}</h3><div class="tag">${p.t}</div><div class="price"><b class="amt">${p.p} €</b> / mois<br><small>Premier mois : ${p.f} €</small></div><ul>${p.k.map(x=>`<li class="${x.startsWith('Tout ')?'inc':''}">${x}</li>`).join('')}</ul><a class="btn${p.mid?'':' ghost'}" href="#audit">Choisir ${p.n}</a></div>`).join('');
 const rows=[["Réponse à 100 % de vos avis, dans toutes les langues",1,1,1],["Alerte et réponse sous 24 h aux avis négatifs",1,1,1],["Procédure complète de retrait des avis abusifs (signalement, contestation, attaques)",1,1,1],["Espace client et rapport mensuel",1,1,1],["Cartes de table sans contact et QR code",0,1,1],["Refonte complète de la fiche Google",0,1,1],["Une publication Google par semaine",0,1,1],["Photos réalisées sur place",0,0,1],["Fiches Apple Plans, TripAdvisor, Bing et Waze",0,0,1],["Gestion de votre page TheFork (abonnement TheFork payé par vous à TheFork)",0,0,1]];
 const ck='<svg viewBox="0 0 20 20" aria-label="inclus"><circle cx="10" cy="10" r="9" fill="var(--red)"/><path d="M6 10.5l2.6 2.5L14 7.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 $('cmp').innerHTML=`<thead><tr><th scope="col">Ce qui est inclus</th><th scope="col">Essentiel</th><th scope="col" class="hl">Pro</th><th scope="col">Premium</th></tr></thead><tbody>${rows.map(([l,...v])=>`<tr><th scope="row">${l}</th>${v.map((x,i)=>`<td class="${i===1?'hl':''}">${x?ck:'<span class="no" aria-label="non inclus">–</span>'}</td>`).join('')}</tr>`).join('')}</tbody>`;
@@ -467,17 +487,27 @@ const calc=()=>{const n=+$('nb').value;$('nbv').textContent=n;$('hrs').textConte
 $('nb').addEventListener('input',calc);calc();
 
 
-// Formulaire d'audit : colle ici l'adresse Formspree (https://formspree.io/f/xxxx) pour recevoir les demandes par e-mail.
+// === RÉGLAGES À REMPLIR (une seule fois) ===
+// FORM_ENDPOINT : adresse Formspree (https://formspree.io/f/xxxx) pour recevoir les demandes d'audit par e-mail.
+// CONTACT : ton e-mail et ton téléphone pro, affichés en bas de page et utilisés si le formulaire n'est pas branché.
 const FORM_ENDPOINT="";
-$('auditf').addEventListener('submit',async e=>{e.preventDefault();const n=$('n').value.trim(),ok=$('ok'),btn=e.target.querySelector('button');ok.style.display='block';
- if(!FORM_ENDPOINT){ok.textContent=`Merci ! Votre demande d'audit pour « ${n} » est notée sur cette page. L'envoi automatique n'est pas encore branché : rien n'a été transmis pour l'instant.`;return;}
+const CONTACT={email:"",phone:""};
+if(CONTACT.email||CONTACT.phone){$('fcontact').innerHTML=[CONTACT.phone&&`<a href="tel:${CONTACT.phone.replace(/\s/g,'')}">${CONTACT.phone}</a>`,CONTACT.email&&`<a href="mailto:${CONTACT.email}">${CONTACT.email}</a>`,'On passe vous voir en dehors du service.'].filter(Boolean).join('<br>');}
+$('auditf').addEventListener('submit',async e=>{e.preventDefault();const f=e.target,n=$('n').value.trim(),ok=$('ok'),btn=f.querySelector('button[type=submit],button:not([type])');ok.style.display='block';
+ if(!FORM_ENDPOINT){
+  if(CONTACT.email){const body=`Établissement : ${n}%0AVille : ${$('v').value}%0AType : ${$('t').value}%0AContact : ${$('c').value}%0A%0A${encodeURIComponent($('m').value)}`;location.href=`mailto:${CONTACT.email}?subject=${encodeURIComponent('Demande d\'audit gratuit : '+n)}&body=${body}`;ok.textContent="Votre messagerie s'ouvre avec votre demande prête : il ne reste qu'à l'envoyer.";return;}
+  ok.textContent=`Merci ! Votre demande pour « ${n} » est notée sur cette page, mais l'envoi en ligne n'est pas encore activé : rien n'a été transmis pour l'instant.`;return;}
  btn.disabled=true;ok.textContent='Envoi en cours…';
- try{const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(e.target)});
-  if(!r.ok)throw 0;ok.textContent=`Merci ! Votre demande d'audit pour « ${n} » est bien partie. On vous recontacte sous 48 h pour fixer un passage en dehors du service.`;e.target.reset();}
- catch(_){ok.textContent="L'envoi n'a pas fonctionné. Appelez-nous ou réessayez dans un instant.";}
+ try{const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)});
+  if(!r.ok)throw 0;ok.textContent=`Merci ! Votre demande d'audit pour « ${n} » est bien partie. On vous recontacte sous 48 h pour fixer un passage en dehors du service.`;f.reset();}
+ catch(_){ok.textContent="L'envoi n'a pas fonctionné. Réessayez dans un instant.";}
  finally{btn.disabled=false;}});
 
-const faqs=[["Pourquoi payer si ma fiche Google est gratuite ?","Votre fiche est gratuite, et vous pouvez tout faire vous-même. Ce que vous payez, c'est le temps : répondre à chaque avis, récolter de nouveaux avis, tenir la fiche à jour et recevoir un rapport chaque mois."],
+const faqs=[["Combien de temps ça me prend, à moi ?","Deux minutes le jour du rendez-vous pour nous ajouter comme gestionnaire de votre fiche, puis quelques secondes par SMS pour valider nos premières réponses. Ensuite, presque rien : vous lisez votre rapport une fois par mois."],
+ ["Quand vais-je voir des résultats ?","Dès la première semaine, tous vos avis en attente ont une réponse. Les nouveaux avis arrivent dès que les cartes sont sur vos tables. La note, elle, évolue au fil des mois, à mesure que les vrais avis s'ajoutent."],
+ ["Je n'ai pas encore de fiche Google, c'est grave ?","Pas du tout. On vous aide à la créer à votre nom, on la remplit entièrement (horaires, menu, photos, description), puis on s'en occupe chaque mois."],
+ ["Avec quels établissements travaillez-vous ?","Restaurants, bars, cafés, boulangeries et commerces de quartier, à Saint-Mandé, Vincennes, dans l'est parisien et alentour. On passe vous voir sur place."],
+["Pourquoi payer si ma fiche Google est gratuite ?","Votre fiche est gratuite, et vous pouvez tout faire vous-même. Ce que vous payez, c'est le temps : répondre à chaque avis, récolter de nouveaux avis, tenir la fiche à jour et recevoir un rapport chaque mois."],
  ["Pouvez-vous faire supprimer les avis négatifs ?","Les avis abusifs, on fait tout pour les faire retirer : faux avis, concurrent, ancien salarié, insultes, attaques personnelles, vagues d'avis coordonnées. Signalement motivé, contestation, signalement d'attaque, et pour un avis diffamatoire, dossier de preuves et orientation vers un avocat. La décision finale revient à Google ou à un juge. Un avis négatif honnête, en revanche, ne peut pas être supprimé et personne d'honnête ne peut vous le promettre : on y répond pour qu'il joue en votre faveur."],
  ["Dois-je vous donner mon mot de passe Google ?","Non. Vous nous ajoutez comme gestionnaire de votre fiche, vous restez propriétaire, et vous pouvez retirer cet accès à tout moment."],
  ["Est-ce que vous écrivez de faux avis ?","Jamais. C'est interdit par la loi et Google sanctionne les fiches concernées. On vous aide uniquement à récolter les avis de vos vrais clients."],
