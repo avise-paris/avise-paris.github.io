@@ -491,7 +491,7 @@ $('nb').addEventListener('input',calc);calc();
 // FORM_ENDPOINT : adresse Formspree (https://formspree.io/f/xxxx) pour recevoir les demandes d'audit par e-mail.
 // CONTACT : ton e-mail et ton téléphone pro, affichés en bas de page et utilisés si le formulaire n'est pas branché.
 const FORM_ENDPOINT="";
-const CONTACT={email:"",phone:""};
+const CONTACT={email:"avise.paris.12@gmail.com",phone:""};
 if(CONTACT.email||CONTACT.phone){$('fcontact').innerHTML=[CONTACT.phone&&`<a href="tel:${CONTACT.phone.replace(/\s/g,'')}">${CONTACT.phone}</a>`,CONTACT.email&&`<a href="mailto:${CONTACT.email}">${CONTACT.email}</a>`,'On passe vous voir en dehors du service.'].filter(Boolean).join('<br>');}
 $('auditf').addEventListener('submit',async e=>{e.preventDefault();const f=e.target,n=$('n').value.trim(),ok=$('ok'),btn=f.querySelector('button[type=submit],button:not([type])');ok.style.display='block';
  if(!FORM_ENDPOINT){
