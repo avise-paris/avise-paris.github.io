@@ -1,0 +1,7 @@
+Outils Avisé (privés, jamais sur le site)
+- nouveau_client.py "Nom" <place_id|lien avis> <Essentiel|Pro|Premium> [--publier] : accès client, page NFC, chevalet, dossier de signature
+- rapport.py <identifiant> mois.json [--publier] : rapport mensuel chiffré
+- chiffrer.py <identifiant> [--nouveau-mdp] : rechiffre / nouveau mot de passe
+- facture.py clients/<identifiant>.json AAAA-MM ["Libellé:prix[:qté]"] : facture numérotée (registre.json), IBAN dans config.json
+- dossier.py [clients/x.json] : dossier de signature (vierge ou pré-rempli)
+clients/*.json contient les mots de passe : à garder privé.
