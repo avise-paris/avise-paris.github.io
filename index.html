@@ -419,7 +419,7 @@ nav a.l.on{color:var(--ink)}nav a.l.on::after{content:"";display:block;height:1.
   <form class="form rv" id="auditf">
     <div class="row2"><div><label for="n">Établissement</label><input id="n" name="etablissement" required></div><div><label for="v">Ville ou quartier</label><input id="v" name="ville" required></div></div>
     <label for="t">Type d'établissement</label><select id="t" name="type"><option>Restaurant</option><option>Bar, café</option><option>Boulangerie, pâtisserie</option><option>Commerce</option><option>Autre</option></select>
-    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+    <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true"><input type="hidden" name="_subject" value="Nouvelle demande d'audit Avisé"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false">
     <label for="c">Téléphone ou e-mail</label><input id="c" name="contact" required>
     <label for="m">Un message ? (facultatif)</label><textarea id="m" name="message"></textarea>
     <p class="note" style="margin-top:12px">Vos coordonnées servent uniquement à vous contacter pour l'audit. Elles sont conservées 3 ans au plus sans suite de votre part, et vous pouvez demander leur suppression à tout moment.</p>
@@ -488,9 +488,9 @@ $('nb').addEventListener('input',calc);calc();
 
 
 // === RÉGLAGES À REMPLIR (une seule fois) ===
-// FORM_ENDPOINT : adresse Formspree (https://formspree.io/f/xxxx) pour recevoir les demandes d'audit par e-mail.
+// FORM_ENDPOINT : service FormSubmit (gratuit, sans compte) qui transmet les demandes d'audit à la boîte Avisé.
 // CONTACT : ton e-mail et ton téléphone pro, affichés en bas de page et utilisés si le formulaire n'est pas branché.
-const FORM_ENDPOINT="";
+const FORM_ENDPOINT="https://formsubmit.co/ajax/avise.paris.12@gmail.com";
 const CONTACT={email:"avise.paris.12@gmail.com",phone:"07 83 36 89 70"};
 if(CONTACT.email||CONTACT.phone){$('fcontact').innerHTML=[CONTACT.phone&&`<a href="tel:${CONTACT.phone.replace(/\s/g,'')}">${CONTACT.phone}</a>`,CONTACT.email&&`<a href="mailto:${CONTACT.email}">${CONTACT.email}</a>`,'On passe vous voir en dehors du service.'].filter(Boolean).join('<br>');}
 $('auditf').addEventListener('submit',async e=>{e.preventDefault();const f=e.target,n=$('n').value.trim(),ok=$('ok'),btn=f.querySelector('button[type=submit],button:not([type])');ok.style.display='block';
