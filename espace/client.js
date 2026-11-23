@@ -1,41 +1,49 @@
-// Avisé : espace client (le patron voit ses rapports publiés)
-import { api, $, esc, fr1, monthLabel, stars, mountLogin, mountNewPassword, SHOWCASE } from "./core.js";
+// Avisé : espace client (le patron se connecte avec son identifiant et son mot de passe)
+import { $, esc, fr1, monthLabel, stars, SHOWCASE, showcaseData, signIn, resume, signOut } from "./core.js";
 
 const app = $("#app");
-let state = { ests: [], est: null, reports: [], idx: 0 };
+let state = { est: null, reports: [], idx: 0 };
 
-api.onRecovery(() => mountNewPassword(app, start));
 start();
 
 async function start() {
-  const user = await api.session();
-  if (!user) return showLogin();
-  $("#who").textContent = user.email;
-  ["#out", "#print"].forEach((s) => ($(s).hidden = false));
-  $("#out").onclick = async () => { await api.signOut(); location.reload(); };
-  if (SHOWCASE) { $("#out").hidden = true; $("#who").innerHTML = '<span class="demo" style="margin:0;white-space:nowrap">Démonstration</span>'; }
-  $("#print").onclick = () => print();
-  try {
-    state.ests = await api.establishments();
-    if (!state.ests.length) return empty("Aucun établissement n'est encore relié à votre compte. Écrivez-nous et nous le relions tout de suite.");
-    await pick(state.ests[0].id);
-  } catch (e) { empty("Impossible de charger vos données pour le moment. Réessayez dans quelques minutes."); }
+  if (SHOWCASE) return open(showcaseData(), true);
+  app.innerHTML = '<div class="panel empty"><p class="muted">Chargement…</p></div>';
+  const data = await resume();
+  data ? open(data) : showLogin();
+}
+
+function open(data, showcase) {
+  state.est = data; state.idx = 0;
+  state.reports = (data.reports || []).slice().sort((a, b) => (a.month < b.month ? 1 : -1));
+  $("#who").innerHTML = showcase ? '<span class="demo" style="margin:0;white-space:nowrap">Démonstration</span>' : esc(data.name);
+  $("#print").hidden = false; $("#print").onclick = () => print();
+  $("#out").hidden = !!showcase; $("#out").onclick = () => { signOut(); location.href = location.pathname; };
+  if (!state.reports.length) return empty("Votre premier rapport arrive à la fin de votre premier mois avec nous.");
+  render();
 }
 
 function showLogin() {
   ["#out", "#print"].forEach((s) => ($(s).hidden = true)); $("#who").textContent = "";
-  mountLogin(app, () => start(), { title: "Votre espace client", hint: "Retrouvez chaque mois votre note, vos avis et nos réponses." });
+  app.innerHTML = `
+  <form class="panel auth" id="f-login" autocomplete="on">
+    <h1>Votre espace client</h1>
+    <p class="muted">Retrouvez chaque mois votre note, vos avis et nos réponses.</p>
+    <label for="l-id">Identifiant</label><input id="l-id" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+    <label for="l-pw">Mot de passe</label><input id="l-pw" name="password" type="password" autocomplete="current-password" required>
+    <button class="btn wide" type="submit" id="l-go">Se connecter</button>
+    <p class="err" id="l-err" role="alert"></p>
+    <p class="muted" style="font-size:13px;margin-top:14px">Identifiant ou mot de passe oublié ? Appelez Jules au 07 83 36 89 70 ou écrivez à avise.paris.12@gmail.com : on vous le renvoie dans la journée.</p>
+    <p class="demo" style="margin-top:12px">Pas encore client ? Essayez avec l'identifiant <b>demo</b> et le mot de passe <b>avise2026</b>.</p>
+  </form>`;
+  $("#f-login").addEventListener("submit", async (e) => {
+    e.preventDefault(); $("#l-err").textContent = ""; $("#l-go").disabled = true; $("#l-go").textContent = "Connexion…";
+    try { open(await signIn($("#l-id").value, $("#l-pw").value)); }
+    catch { $("#l-err").textContent = "Identifiant ou mot de passe incorrect."; $("#l-go").disabled = false; $("#l-go").textContent = "Se connecter"; }
+  });
 }
 
 function empty(msg) { app.innerHTML = `<div class="panel empty"><h2>Bienvenue</h2><p class="muted">${esc(msg)}</p></div>`; }
-
-async function pick(estId) {
-  state.est = state.ests.find((e) => e.id === estId);
-  state.reports = (await api.reports(estId)).filter((r) => r.published !== false);
-  state.idx = 0;
-  if (!state.reports.length) return empty("Votre premier rapport arrive à la fin de votre premier mois avec nous.");
-  render();
-}
 
 function delta(cur, prev, key, unit = "", dec = false) {
   if (!prev || prev[key] == null || cur[key] == null) return "";
@@ -66,10 +74,10 @@ function compBars(r) {
     rows.map((x) => `<div class="bar${x.me ? " me" : ""}"><span>${esc(x.name)}<small>${x.reviews ?? "–"} avis</small></span><i><s style="width:${(x.rating / 5) * 100}%"></s></i><span>${fr1(x.rating)}</span></div>`).join("");
 }
 
-async function render() {
+function render() {
   const r = state.reports[state.idx], p = state.reports[state.idx + 1];
-  const hl = await api.highlights(r.id);
-  const estSel = state.ests.length > 1 ? `<select id="est" aria-label="Établissement">${state.ests.map((e) => `<option value="${e.id}"${e.id === state.est.id ? " selected" : ""}>${esc(e.name)}</option>`).join("")}</select>` : "";
+  const hl = r.highlights || [];
+  const estSel = "";
   app.innerHTML = `
   <div class="head"><h1>${esc(state.est.name)}</h1>${estSel}
     <select id="m" aria-label="Mois du rapport">${state.reports.map((x, i) => `<option value="${i}"${i === state.idx ? " selected" : ""}>Rapport de ${monthLabel(x.month)}</option>`).join("")}</select></div>
@@ -95,5 +103,4 @@ async function render() {
   </div>
   <p class="legal">Votre fiche Google vous appartient et reste gratuite. Avisé y est ajouté comme gestionnaire ; vous pouvez retirer cet accès à tout moment depuis votre fiche. Une question sur ce rapport ? Répondez simplement à notre e-mail mensuel.</p>`;
   $("#m").onchange = (e) => { state.idx = +e.target.value; render(); };
-  if ($("#est")) $("#est").onchange = (e) => pick(e.target.value);
 }
