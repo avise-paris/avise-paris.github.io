@@ -498,9 +498,9 @@ $('auditf').addEventListener('submit',async e=>{e.preventDefault();const f=e.tar
   if(CONTACT.email){const body=`Établissement : ${n}%0AVille : ${$('v').value}%0AType : ${$('t').value}%0AContact : ${$('c').value}%0A%0A${encodeURIComponent($('m').value)}`;location.href=`mailto:${CONTACT.email}?subject=${encodeURIComponent('Demande d\'audit gratuit : '+n)}&body=${body}`;ok.textContent="Votre messagerie s'ouvre avec votre demande prête : il ne reste qu'à l'envoyer.";return;}
   ok.textContent=`Merci ! Votre demande pour « ${n} » est notée sur cette page, mais l'envoi en ligne n'est pas encore activé : rien n'a été transmis pour l'instant.`;return;}
  btn.disabled=true;ok.textContent='Envoi en cours…';
- try{const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)});
+ try{const ac=new AbortController(),to=setTimeout(()=>ac.abort(),12000);const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f),signal:ac.signal});clearTimeout(to);
   if(!r.ok)throw 0;ok.textContent=`Merci ! Votre demande d'audit pour « ${n} » est bien partie. On vous recontacte sous 48 h pour fixer un passage en dehors du service.`;f.reset();}
- catch(_){ok.textContent="L'envoi n'a pas fonctionné. Réessayez dans un instant.";}
+ catch(_){ok.textContent="L'envoi en ligne n'a pas abouti : votre messagerie s'ouvre avec la demande déjà remplie, il ne reste qu'à l'envoyer.";const body=`Établissement : ${n}%0AVille : ${$('v').value}%0AType : ${$('t').value}%0AContact : ${$('c').value}%0A%0A${encodeURIComponent($('m').value)}`;location.href=`mailto:${CONTACT.email}?subject=${encodeURIComponent('Demande d\'audit gratuit : '+n)}&body=${body}`;}
  finally{btn.disabled=false;}});
 
 const faqs=[["Combien de temps ça me prend, à moi ?","Deux minutes le jour du rendez-vous pour nous ajouter comme gestionnaire de votre fiche, puis quelques secondes par SMS pour valider nos premières réponses. Ensuite, presque rien : vous lisez votre rapport une fois par mois."],
