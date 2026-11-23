@@ -234,6 +234,51 @@ nav a.l.on{color:var(--ink)}nav a.l.on::after{content:"";display:block;height:1.
 @media(max-width:620px){.who em{margin-left:0;width:100%}.cmp.vs{min-width:560px;table-layout:auto}}
 /* reveal */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}.rv.in{opacity:1;transform:none}
+
+/* ===== Histoire au défilement ===== */
+#histoire{position:relative;height:560vh;background:var(--bg)}
+#histoire .pin{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(24px,5vw,80px);padding:0 max(24px,calc((100vw - 1180px)/2))}
+.hs-big{position:absolute;right:-1vw;bottom:-7vh;text-align:right;font:600 clamp(220px,42vw,620px)/.8 Fraunces,serif;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:2px var(--hs-col,var(--line));opacity:.4;pointer-events:none;user-select:none;transition:-webkit-text-stroke-color .6s}
+.hs-txt{position:relative;z-index:2;min-height:300px}
+.hs-ch{position:absolute;inset:0 0 auto 0;opacity:0;transform:translateY(24px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.hs-ch.on{opacity:1;transform:none}
+.hs-ch h3{font:600 clamp(36px,4.6vw,64px)/1.02 Fraunces,serif;letter-spacing:-.02em;margin:0 0 18px}
+.hs-ch p{color:var(--soft);font-size:clamp(16px,1.4vw,19px);max-width:42ch;margin:0}
+.hs-rail{position:absolute;left:0;bottom:-90px;display:flex;gap:8px;z-index:2}
+.hs-rail i{width:38px;height:4px;border-radius:2px;background:var(--line);overflow:hidden;position:relative}
+.hs-rail i b{position:absolute;inset:0;background:var(--red);transform-origin:left;transform:scaleX(var(--f,0))}
+.hs-stage{position:relative;z-index:2;display:grid;place-items:center;height:min(720px,86svh)}
+.hs-phone{width:min(340px,78vw);height:min(660px,80svh);border-radius:46px;background:#0b0908;border:9px solid #2a211d;box-shadow:0 60px 120px -40px rgba(0,0,0,.6);overflow:hidden;position:relative;transform:translateY(var(--py,0px)) rotate(var(--pr,0deg));transition:transform .2s linear}
+.hs-scr{position:absolute;inset:0;background:#fff;color:#202124;font:14px/1.4 Inter,system-ui,sans-serif;overflow:hidden}
+.hs-top{padding:34px 18px 14px;border-bottom:1px solid #eceff1}
+.hs-top b{font:600 18px Inter;display:block}
+.hs-rate{display:flex;align-items:center;gap:8px;margin-top:6px;color:#5f6368}
+.hs-rate strong{font:700 26px Inter;color:#202124;min-width:46px}
+.hs-st{color:#fbbc04;letter-spacing:1px}.hs-st i{font-style:normal;color:#dadce0}
+.hs-list{padding:8px 14px}
+.hs-rev{border-bottom:1px solid #f1f3f4;padding:12px 4px;max-height:240px;overflow:hidden;transform-origin:top;transition:opacity .4s,max-height .5s,padding .5s}.hs-rev.off{max-height:0;padding-top:0;padding-bottom:0;border-bottom-width:0;opacity:0}
+.hs-rev .h{display:flex;align-items:center;gap:8px;font-weight:600}
+.hs-rev .a{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;font:600 12px Inter;background:#8d6e63}
+.hs-rev .m{color:#70757a;font-size:12px;margin-left:auto}
+.hs-rev p{margin:6px 0 0}
+.hs-badge{display:inline-block;margin-top:6px;font:600 11px Inter;padding:3px 8px;border-radius:99px;background:#fde7e4;color:#c5221f}
+.hs-reply{margin:8px 0 0 12px;padding:10px 12px;border-left:3px solid #1a73e8;background:#f1f6fe;border-radius:0 10px 10px 0;font-size:13px;min-height:20px}
+.hs-reply b{display:block;font-size:11px;color:#1a73e8;margin-bottom:2px}
+.hs-stamp{position:absolute;right:16px;top:14px;font:800 15px Inter;letter-spacing:.06em;color:#188038;border:3px solid #188038;border-radius:8px;padding:3px 8px;transform:rotate(-10deg) scale(var(--ss,0));opacity:var(--so,0)}
+.hs-card{position:absolute;bottom:-40px;left:50%;width:230px;height:146px;margin-left:-115px;border-radius:18px;background:linear-gradient(160deg,#2a1d18,#100c0a);border:1px solid #3d2c24;color:#f4ece1;padding:18px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);transform:translateY(var(--cy,260px)) rotate(-6deg);z-index:3}
+.hs-card b{font:600 19px/1.05 Fraunces,serif;display:block}.hs-card b em{display:block;font-style:italic;font-weight:400;color:#e2483b}
+.hs-card span{position:absolute;right:14px;bottom:14px;width:54px;height:54px;border-radius:50%;border:2px solid #e2483b;display:grid;place-items:center;font:700 9px Inter;text-align:center}
+.hs-wave{position:absolute;left:50%;bottom:40px;width:160px;height:160px;margin-left:-80px;border-radius:50%;border:3px solid var(--gold);opacity:0;z-index:2;pointer-events:none}
+@media (max-width:860px){
+ #histoire{height:480vh}
+ #histoire .pin{grid-template-columns:1fr;grid-template-rows:auto 1fr;align-content:start;padding-top:104px;gap:6px}
+ .hs-txt{min-height:150px}.hs-ch h3{font-size:30px;margin-bottom:8px}.hs-ch p{font-size:15px}
+ .hs-rail{display:none}.hs-stage{height:auto}
+ .hs-phone{width:236px;height:min(430px,56svh);border-radius:34px;border-width:7px}
+ .hs-card{width:190px;height:120px;margin-left:-95px}
+}
+@media (prefers-reduced-motion:reduce){#histoire{height:auto}#histoire .pin{position:relative;height:auto;padding-top:80px;padding-bottom:80px}.hs-ch{position:relative;opacity:1;transform:none;margin-bottom:28px}.hs-big,.hs-rail,.hs-card,.hs-wave{display:none}}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.mq div{animation:none}}
 @media(max-width:980px){.hgrid,.ngrid,.calc,.fgrid,.cols{grid-template-columns:minmax(0,1fr)}.plans,.grid,.rules{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.step::after{display:none}nav a.l{display:none}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.facts,.extras,.fcols,.row2,.steps{grid-template-columns:minmax(0,1fr)}.feed{min-height:470px}.bar{grid-template-columns:6.6em minmax(0,1fr) 2.6em}nav .btn{display:none}}
@@ -278,6 +323,34 @@ nav a.l.on{color:var(--ink)}nav a.l.on::after{content:"";display:block;height:1.
     <div class="fact rv"><b data-n="50" data-p="+ de " data-s=" %">+ de 50 %</b>des Français consultent les avis avant d'aller dans un point de vente, jusqu'à 70 % chez les 25-34 ans.<small>Source : étude Partoo, Journal du Net</small></div>
     <div class="fact rv"><b data-n="100">100</b>avis : c'est le seuil à partir duquel la confiance des clients s'installe vraiment.<small>Source : étude Geolid, Journal du Net</small></div>
     <div class="fact rv"><b data-n="10" data-s=" / mois">10 / mois</b>La régularité compte plus que le volume : mieux vaut 10 avis chaque mois qu'une rafale.<small>Source : étude Geolid, Journal du Net</small></div>
+  </div>
+</div></section>
+
+
+<section id="histoire" aria-label="Ce qu'Avisé change sur votre fiche Google, étape par étape"><div class="pin">
+  <div class="hs-big" aria-hidden="true" id="hsBig">4,1</div>
+  <div class="hs-txt">
+    <div class="hs-ch" data-c="0"><h3>Dimanche soir, un avis 1 étoile tombe.</h3><p>Votre note passe sous la barre des 4. Le prochain client qui vous cherche sur Google le voit en premier.</p></div>
+    <div class="hs-ch" data-c="1"><h3>Vous êtes en cuisine. Personne ne répond.</h3><p>Trois jours plus tard, l'avis est toujours là, sans réponse. Pour un client qui hésite, ce silence pèse plus que l'avis lui-même.</p></div>
+    <div class="hs-ch" data-c="2"><h3>Avisé répond pour vous, en moins de 24 h.</h3><p>Une réponse calme, à votre nom, dans la langue du client. Vous la validez d'un SMS les premières semaines.</p></div>
+    <div class="hs-ch" data-c="3"><h3>Le faux avis est signalé, puis retiré.</h3><p>Compte jamais venu, insultes, concurrent : on suit la procédure de Google jusqu'au bout.</p></div>
+    <div class="hs-ch" data-c="4"><h3>Vos clients contents laissent enfin un avis.</h3><p>Ils posent leur téléphone sur la carte NFC de la table : votre page d'avis s'ouvre. La note remonte, avec de vrais clients.</p></div>
+    <div class="hs-rail" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+  </div>
+  <div class="hs-stage" aria-hidden="true">
+    <div class="hs-phone" id="hsPhone"><div class="hs-scr">
+      <div class="hs-top"><b>Le Petit Comptoir</b><div class="hs-rate"><strong id="hsRate">4,1</strong><span class="hs-st" id="hsStars">★★★★<i>★</i></span><span id="hsCount">87 avis</span></div></div>
+      <div class="hs-list" id="hsList">
+        <div class="hs-rev off" id="hsNew1"><div class="h"><span class="a" style="background:#e2483b">S</span>Sophie L.<span class="m">à l'instant</span></div><span class="hs-st">★★★★★</span><p>Accueil adorable, on reviendra !</p></div>
+        <div class="hs-rev off" id="hsNew2"><div class="h"><span class="a" style="background:#1a73e8">J</span>James P.<span class="m">à l'instant</span></div><span class="hs-st">★★★★★</span><p>Great food, lovely terrace.</p></div>
+        <div class="hs-rev off" id="hsNew3"><div class="h"><span class="a" style="background:#188038">N</span>Nadia K.<span class="m">à l'instant</span></div><span class="hs-st">★★★★<i>★</i></span><p>Très bon rapport qualité-prix.</p></div>
+        <div class="hs-rev off" id="hsBad"><div class="h"><span class="a">M</span>Marc D.<span class="m" id="hsWhen">à l'instant</span></div><span class="hs-st">★<i>★★★★</i></span><p>Service lent, accueil froid. Je ne reviendrai pas.</p><span class="hs-badge" id="hsNo">Sans réponse</span><div class="hs-reply" id="hsReply" style="display:none"><b>Réponse du propriétaire</b><span id="hsType"></span></div></div>
+        <div class="hs-rev" id="hsFake" style="position:relative"><div class="h"><span class="a" style="background:#5f6368">?</span>Compte anonyme<span class="m">il y a 2 jours</span></div><span class="hs-st">★<i>★★★★</i></span><p>Arnaque, à fuir !!!</p><span class="hs-stamp" id="hsStamp">SIGNALÉ ✓</span></div>
+        <div class="hs-rev"><div class="h"><span class="a" style="background:#a142f4">L</span>Léa R.<span class="m">il y a 1 semaine</span></div><span class="hs-st">★★★★★</span><p>Le meilleur croque du quartier.</p></div>
+      </div>
+    </div></div>
+    <div class="hs-wave" id="hsW1"></div><div class="hs-wave" id="hsW2"></div>
+    <div class="hs-card" id="hsCard"><b>Vous avez aimé ?<em>Dites-le sur Google.</em></b><span>POSEZ<br>ICI</span></div>
   </div>
 </div></section>
 
@@ -536,6 +609,38 @@ const stage=$('stage'),card=$('nfc');
 if(!reduce){stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`rotateY(${x*28}deg) rotateX(${-y*24}deg)`;card.style.setProperty('--sx',`${50+x*100}%`);});
 stage.addEventListener('pointerleave',()=>{card.style.transform='';});}
 }
+
+/* ===== Histoire au défilement ===== */
+(()=>{const sec=document.getElementById('histoire');if(!sec)return;
+const $$=id=>document.getElementById(id),chs=[...sec.querySelectorAll('.hs-ch')],rail=[...sec.querySelectorAll('.hs-rail b')];
+const big=$$('hsBig'),rate=$$('hsRate'),stars=$$('hsStars'),cnt=$$('hsCount'),bad=$$('hsBad'),no=$$('hsNo'),rep=$$('hsReply'),typ=$$('hsType'),fake=$$('hsFake'),stamp=$$('hsStamp'),card=$$('hsCard'),phone=$$('hsPhone'),w1=$$('hsW1'),w2=$$('hsW2'),when=$$('hsWhen'),nw=[$$('hsNew1'),$$('hsNew2'),$$('hsNew3')];
+const R="Bonjour Marc, merci pour votre retour. Nous avons renforcé l'équipe le soir : revenez, le café est pour nous. Julien, gérant.";
+const C=x=>Math.max(0,Math.min(1,x)),seg=(p,a,b)=>C((p-a)/(b-a));
+const fr=v=>v.toFixed(1).replace('.',','),st=v=>{const n=Math.round(v);return'★'.repeat(n)+'<i>'+'★'.repeat(5-n)+'</i>'};
+function show(r){r.classList.remove('off')}function hide(r){r.classList.add('off')}
+function draw(p){
+ const c=Math.min(4,Math.floor(p*5));chs.forEach((e,i)=>e.classList.toggle('on',i===c));rail.forEach((b,i)=>b.style.setProperty('--f',C(p*5-i)));
+ // 0 : l'avis 1 étoile arrive
+ const a=seg(p,.03,.12);a>0?show(bad):hide(bad);
+ let r=4.1-0.2*a,n=87+(a>0?1:0);
+ when.textContent=p<.22?"à l'instant":"il y a 3 jours";
+ no.style.display=p<.42?'inline-block':'none';no.style.opacity=p>.2&&p<.4?(Math.sin(p*120)>0?1:.45):1;
+ // 2 : la réponse s'écrit
+ const t=seg(p,.42,.58);rep.style.display=t>0?'block':'none';typ.textContent=R.slice(0,Math.round(R.length*t));
+ // 3 : faux avis signalé puis retiré
+ const s1=seg(p,.62,.66),s2=seg(p,.7,.76);stamp.style.setProperty('--ss',.6+.4*s1);stamp.style.setProperty('--so',s1);
+ fake.classList.toggle('off',s2>.5);if(s2>.5){r+=0.1;n-=1}
+ // 4 : carte NFC puis nouveaux avis
+ const k=seg(p,.8,.86);card.style.setProperty('--cy',(1-k)*260+'px');phone.style.setProperty('--py',-k*18+'px');phone.style.setProperty('--pr',-k*3+'deg');
+ const w=seg(p,.85,.95);[w1,w2].forEach((e,i)=>{const q=C(w*1.6-i*.35);e.style.opacity=q>0&&q<1?(1-q)*.9:0;e.style.transform=`scale(${.6+q*1.6})`});
+ nw.forEach((e,i)=>p>.87+i*.035?show(e):hide(e));
+ const up=seg(p,.87,.98);r+=0.7*up;n+=Math.round(42*up);
+ rate.textContent=fr(r);stars.innerHTML=st(r);cnt.textContent=n+' avis';big.textContent=fr(r);
+ sec.style.setProperty('--hs-col',r<4?'var(--red)':(r>=4.5?'var(--gold)':'var(--line)'));
+}
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){draw(1);return}
+let tk=0;function onS(){if(tk)return;tk=requestAnimationFrame(()=>{tk=0;const b=sec.getBoundingClientRect(),h=b.height-innerHeight;draw(C(-b.top/h))})}
+addEventListener('scroll',onS,{passive:true});addEventListener('resize',onS);onS();})();
 </script>
 </body>
 </html>
