@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /espace/
-Sitemap: https://julespariset13-cell.github.io/avise./sitemap.xml
+Sitemap: https://avise-paris.github.io/sitemap.xml
