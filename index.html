@@ -267,7 +267,7 @@ nav a.l.on{color:var(--ink)}nav a.l.on::after{content:"";display:block;height:1.
 </div></header>
 
 <div class="mq" aria-hidden="true"><div id="mq"></div></div>
-<section class="prom"><div class="wrap pgrid"><div><b>100 %</b>de vos avis reçoivent une réponse</div><div><b>24 h</b>maximum pour répondre à un avis négatif</div><div><b>1 rapport</b>clair chaque mois, dans votre espace</div><div><b>0 mot de passe</b>demandé : vous restez propriétaire</div></div></section>
+<section class="prom"><div class="wrap pgrid"><div><b>100 %</b>de vos avis reçoivent une réponse</div><div><b>24 h</b>maximum pour répondre à un avis négatif</div><div><b>1 rapport</b>clair chaque mois, dans votre espace</div><div><b>0 mot de passe Google</b>demandé : vous restez propriétaire</div></div></section>
 <section class="who"><div class="wrap"><b>Pour qui ?</b><span>Restaurants</span><span>Bars et cafés</span><span>Boulangeries</span><span>Commerces de quartier</span><em>Saint-Mandé · Vincennes · Paris 11e, 12e, 20e · Montreuil · Nogent</em></div></section>
 
 
@@ -513,7 +513,7 @@ const faqs=[["Combien de temps ça me prend, à moi ?","Deux minutes le jour du 
  ["Est-ce que vous écrivez de faux avis ?","Jamais. C'est interdit par la loi et Google sanctionne les fiches concernées. On vous aide uniquement à récolter les avis de vos vrais clients."],
  ["Les réponses sonnent-elles comme un robot ?","Non. Chaque réponse reprend un détail de l'avis (le plat, le prénom, le moment) et respecte le ton que vous avez choisi. Les premières semaines, vous validez chacune d'elles."],
  ["TheFork est-il gratuit ?","Non. TheFork fonctionne avec un abonnement mensuel et une commission sur les réservations qu'il vous apporte. On vous montre le calcul pour votre établissement, et on s'occupe de l'inscription seulement si vous le décidez."],
- ["Je peux arrêter quand je veux ?","Oui, c'est sans engagement de longue durée : le préavis est précisé dans votre devis. Si vous signez chez vous et employez 5 salariés ou moins, vous disposez aussi d'un délai de rétractation de 14 jours."]];
+ ["Je peux arrêter quand je veux ?","Oui, c'est sans engagement de durée : vous arrêtez quand vous voulez, avec un mois de préavis. Si vous signez chez vous et employez 5 salariés ou moins, vous disposez aussi d'un délai de rétractation de 14 jours."]];
 $('faqs').innerHTML=faqs.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join('');
 
 const count=el=>{const n=+el.dataset.n,p=el.dataset.p||'',s=el.dataset.s||'';if(reduce){el.textContent=p+n+s;return;}const t0=performance.now();const step=t=>{const k=Math.min(1,(t-t0)/1400),e=1-Math.pow(1-k,3);el.textContent=p+Math.round(n*e)+s;if(k<1)requestAnimationFrame(step);};requestAnimationFrame(step);};
