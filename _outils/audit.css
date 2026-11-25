@@ -1,0 +1,41 @@
+:root{--ink:#1d1a17;--ink2:#5f584f;--line:#e6dfd2;--paper:#faf6ee;--red:#b0241b;--green:#1e8a4a;--gold:#e3a008}
+*{box-sizing:border-box;margin:0;min-width:0}body{font:16px/1.55 Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+.wrap{max-width:680px;margin:0 auto;padding:20px 18px 48px}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.logo{font:400 28px "Instrument Serif",serif;color:var(--ink);text-decoration:none}.top span{font-size:12.5px;color:var(--ink2);text-align:right}
+.who{margin-top:22px;font-size:14px;color:var(--ink2);font-weight:500}
+h1{font:400 clamp(32px,7.6vw,46px)/1.05 "Instrument Serif",serif;margin:6px 0 0;text-wrap:balance}
+h2{font:400 28px/1.1 "Instrument Serif",serif;margin:38px 0 4px}
+.sub{font-size:13.5px;color:var(--ink2);margin-bottom:10px}
+.score{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin-top:22px}
+.big{font:400 72px/0.9 "Instrument Serif",serif}.big small{font:600 14px Inter;color:var(--ink2);display:block;margin-top:8px}
+.db{display:grid;grid-template-columns:12px 1fr 42px;gap:8px;align-items:center;font-size:12.5px;color:var(--ink2);margin:3px 0}
+.db div{height:8px;border-radius:4px;background:#efe8db;overflow:hidden}.db i{display:block;height:100%;background:var(--gold)}.db b{text-align:right;font-weight:600}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.k{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 14px}
+.k b{display:block;font:400 32px/1 "Instrument Serif",serif;white-space:nowrap}.k sup{font-size:.5em}.k span{font-size:12.5px;color:var(--ink2);display:block;margin-top:4px;line-height:1.35}
+.read{margin-top:14px;background:var(--ink);color:#f3ede2;border-radius:14px;padding:15px 16px;font-size:15px}
+.read b{display:block;font:400 21px "Instrument Serif",serif;color:#fff;margin-bottom:2px}
+.cmp{display:grid;grid-template-columns:minmax(0,1.4fr) 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.cn small{display:block;font-size:12px;color:var(--ink2)}.cmp.me .cn{font-weight:700}.cmp.me{background:linear-gradient(90deg,#fbeceb,transparent);margin:0 -10px;padding-inline:10px;border-radius:8px}
+.cb{height:10px;border-radius:5px;background:#ece5d8;overflow:hidden}.cb i{display:block;height:100%;background:#a89f92;border-radius:5px}.cmp.me .cb i{background:var(--red)}
+.cr{text-align:right;white-space:nowrap}.cr b{font-size:16px}.cr small{display:block;font-size:12px;color:var(--ink2)}
+.rv{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:8px}
+.rv.neg{border-color:#efc9c5}
+.rh{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:13.5px}.rh span:last-child{color:var(--ink2);font-size:12.5px;margin-left:auto}
+.st{color:var(--gold);letter-spacing:1px;font-size:14px}.st i{color:#ddd5c7;font-style:normal}
+.rv p{font-size:14.5px;margin-top:5px}.rv p.nt{color:var(--ink2);font-style:italic;font-size:13.5px}
+.rv em{display:inline-block;margin-top:7px;font:600 11.5px Inter;font-style:normal;color:var(--red);background:#fbeceb;border-radius:6px;padding:2px 8px}
+.empty{font-size:14.5px;color:var(--ink2);background:#fff;border:1px dashed var(--line);border-radius:14px;padding:14px}
+.flag{margin-top:10px;border-left:3px solid var(--gold);background:#fff8e6;border-radius:8px;padding:10px 12px;font-size:14px}.flag b{display:block}
+ul{padding-left:0;list-style:none}li{padding:9px 0 9px 26px;border-bottom:1px solid var(--line);position:relative;font-size:15px}
+li::before{content:"";position:absolute;left:4px;top:17px;width:9px;height:9px;border-radius:50%;background:var(--green)}
+.goal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:30px}
+.goal div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}.goal b{display:block;font:400 30px/1 "Instrument Serif",serif}.goal span{font-size:12px;color:var(--ink2)}
+.offer{background:var(--ink);color:#fff;border-radius:18px;padding:22px;margin-top:24px}
+.offer h2{margin:0 0 6px;color:#fff}.offer p{color:#e9e2d6;font-size:15px}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.btn{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:12px;font-weight:600;text-decoration:none;background:#fff;color:var(--ink)}
+.btn.r{background:var(--red);color:#fff}
+.note{font-size:12px;color:var(--ink2);margin-top:22px}
+@media(max-width:440px){.score{grid-template-columns:1fr}.cmp{grid-template-columns:1fr auto}.cb{grid-column:1/-1;order:3}.goal{grid-template-columns:1fr 1fr}.goal div:first-child{grid-column:1/-1}.btns{grid-template-columns:1fr}}

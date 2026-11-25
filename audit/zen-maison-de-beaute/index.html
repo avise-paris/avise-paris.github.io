@@ -1,45 +1,64 @@
 <!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>Audit Google · Zen maison de beauté · Avisé</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--ink:#1d1a17;--ink2:#5f584f;--line:#e6dfd2;--paper:#faf6ee;--red:#b0241b;--green:#1e8a4a}
+<style>:root{--ink:#1d1a17;--ink2:#5f584f;--line:#e6dfd2;--paper:#faf6ee;--red:#b0241b;--green:#1e8a4a;--gold:#e3a008}
 *{box-sizing:border-box;margin:0;min-width:0}body{font:16px/1.55 Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper)}
 .wrap{max-width:680px;margin:0 auto;padding:20px 18px 48px}
-.top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px}
-.logo{font:400 28px "Instrument Serif",serif;color:var(--ink);text-decoration:none}.top span{font-size:13px;color:var(--ink2)}
-h1{font:400 clamp(36px,9vw,52px)/1.02 "Instrument Serif",serif;margin:26px 0 6px;text-wrap:balance}
-.sub{color:var(--ink2);font-size:14.5px}
-h2{font:400 28px/1.1 "Instrument Serif",serif;margin:34px 0 12px}
-.score{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:22px}
-.big{font:400 76px/0.9 "Instrument Serif",serif}.big small{font:600 15px Inter;color:var(--ink2);display:block;margin-top:6px}
-.score p{font-size:15px}.score strong{color:var(--red)}
-.cmp{display:grid;grid-template-columns:minmax(0,1.3fr) 1fr auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
-.cmp.me .cn{font-weight:700}.cb{height:10px;border-radius:5px;background:#ece5d8;overflow:hidden}.cb i{display:block;height:100%;background:#a89f92;border-radius:5px}
-.cmp.me .cb i{background:var(--red)}.cr{white-space:nowrap;text-align:right}.cr small{color:var(--ink2)}
-.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}.k{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}
-.k b{display:block;font:400 34px/1 "Instrument Serif",serif}.k span{font-size:13px;color:var(--ink2)}
-ul{padding-left:0;list-style:none}li{padding:10px 0 10px 30px;border-bottom:1px solid var(--line);position:relative}
-li::before{content:"";position:absolute;left:4px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--red)}
-.act li::before{background:var(--green)}
-.offer{background:var(--ink);color:#fff;border-radius:18px;padding:22px;margin-top:34px}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.logo{font:400 28px "Instrument Serif",serif;color:var(--ink);text-decoration:none}.top span{font-size:12.5px;color:var(--ink2);text-align:right}
+.who{margin-top:22px;font-size:14px;color:var(--ink2);font-weight:500}
+h1{font:400 clamp(32px,7.6vw,46px)/1.05 "Instrument Serif",serif;margin:6px 0 0;text-wrap:balance}
+h2{font:400 28px/1.1 "Instrument Serif",serif;margin:38px 0 4px}
+.sub{font-size:13.5px;color:var(--ink2);margin-bottom:10px}
+.score{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin-top:22px}
+.big{font:400 72px/0.9 "Instrument Serif",serif}.big small{font:600 14px Inter;color:var(--ink2);display:block;margin-top:8px}
+.db{display:grid;grid-template-columns:12px 1fr 42px;gap:8px;align-items:center;font-size:12.5px;color:var(--ink2);margin:3px 0}
+.db div{height:8px;border-radius:4px;background:#efe8db;overflow:hidden}.db i{display:block;height:100%;background:var(--gold)}.db b{text-align:right;font-weight:600}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.k{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 14px}
+.k b{display:block;font:400 32px/1 "Instrument Serif",serif;white-space:nowrap}.k sup{font-size:.5em}.k span{font-size:12.5px;color:var(--ink2);display:block;margin-top:4px;line-height:1.35}
+.read{margin-top:14px;background:var(--ink);color:#f3ede2;border-radius:14px;padding:15px 16px;font-size:15px}
+.read b{display:block;font:400 21px "Instrument Serif",serif;color:#fff;margin-bottom:2px}
+.cmp{display:grid;grid-template-columns:minmax(0,1.4fr) 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.cn small{display:block;font-size:12px;color:var(--ink2)}.cmp.me .cn{font-weight:700}.cmp.me{background:linear-gradient(90deg,#fbeceb,transparent);margin:0 -10px;padding-inline:10px;border-radius:8px}
+.cb{height:10px;border-radius:5px;background:#ece5d8;overflow:hidden}.cb i{display:block;height:100%;background:#a89f92;border-radius:5px}.cmp.me .cb i{background:var(--red)}
+.cr{text-align:right;white-space:nowrap}.cr b{font-size:16px}.cr small{display:block;font-size:12px;color:var(--ink2)}
+.rv{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:8px}
+.rv.neg{border-color:#efc9c5}
+.rh{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:13.5px}.rh span:last-child{color:var(--ink2);font-size:12.5px;margin-left:auto}
+.st{color:var(--gold);letter-spacing:1px;font-size:14px}.st i{color:#ddd5c7;font-style:normal}
+.rv p{font-size:14.5px;margin-top:5px}.rv p.nt{color:var(--ink2);font-style:italic;font-size:13.5px}
+.rv em{display:inline-block;margin-top:7px;font:600 11.5px Inter;font-style:normal;color:var(--red);background:#fbeceb;border-radius:6px;padding:2px 8px}
+.empty{font-size:14.5px;color:var(--ink2);background:#fff;border:1px dashed var(--line);border-radius:14px;padding:14px}
+.flag{margin-top:10px;border-left:3px solid var(--gold);background:#fff8e6;border-radius:8px;padding:10px 12px;font-size:14px}.flag b{display:block}
+ul{padding-left:0;list-style:none}li{padding:9px 0 9px 26px;border-bottom:1px solid var(--line);position:relative;font-size:15px}
+li::before{content:"";position:absolute;left:4px;top:17px;width:9px;height:9px;border-radius:50%;background:var(--green)}
+.goal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:30px}
+.goal div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}.goal b{display:block;font:400 30px/1 "Instrument Serif",serif}.goal span{font-size:12px;color:var(--ink2)}
+.offer{background:var(--ink);color:#fff;border-radius:18px;padding:22px;margin-top:24px}
 .offer h2{margin:0 0 6px;color:#fff}.offer p{color:#e9e2d6;font-size:15px}
 .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
 .btn{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:12px;font-weight:600;text-decoration:none;background:#fff;color:var(--ink)}
 .btn.r{background:var(--red);color:#fff}
-.note{font-size:12.5px;color:var(--ink2);margin-top:22px}
-@media(max-width:420px){.cmp{grid-template-columns:1fr auto}.cb{grid-column:1/-1;order:3}.btns{grid-template-columns:1fr}}
+.note{font-size:12px;color:var(--ink2);margin-top:22px}
+@media(max-width:440px){.score{grid-template-columns:1fr}.cmp{grid-template-columns:1fr auto}.cb{grid-column:1/-1;order:3}.goal{grid-template-columns:1fr 1fr}.goal div:first-child{grid-column:1/-1}.btns{grid-template-columns:1fr}}
 </style></head><body><div class="wrap">
-<div class="top"><a class="logo" href="https://avise-paris.github.io/">Avisé</a><span>Audit offert · relevé du 23 novembre 2026</span></div>
-<h1>Zen maison de beauté</h1><p class="sub">Commerce · 2 Pl. du Général Leclerc, 94160 Saint-Mandé</p>
-<div class="score"><div class="big">4,0<small>98 avis</small></div>
-<p>Sur Google, vous êtes <strong>4e sur 4</strong> face aux établissements que vos clients comparent avec vous.</p></div>
-<h2>Vous et vos voisins</h2><div class="cmp"><div class="cn">The Art of Beauty</div><div class="cb"><i style="width:100%"></i></div><div class="cr"><b>5,0</b> <small>94 avis</small></div></div><div class="cmp"><div class="cn">Glow Up By Laura</div><div class="cb"><i style="width:67%"></i></div><div class="cr"><b>4,5</b> <small>51 avis</small></div></div><div class="cmp"><div class="cn">L&#x27;Institut Saint-Mandé</div><div class="cb"><i style="width:60%"></i></div><div class="cr"><b>4,4</b> <small>32 avis</small></div></div><div class="cmp me"><div class="cn">Zen maison de beauté</div><div class="cb"><i style="width:33%"></i></div><div class="cr"><b>4,0</b> <small>98 avis</small></div></div>
-<h2>Votre objectif : 4,4</h2>
-<div class="kpis"><div class="k"><b>≈ 53</b><span>nouveaux avis excellents pour l'afficher (estimation)</span></div>
-<div class="k"><b>≈ 3 sem.</b><span>à 3 nouveaux avis par jour, avec nos cartes sans contact</span></div></div>
-<h2>Ce que disent vos clients</h2><ul><li>Clientes fidèles depuis des années, qualité des ongles saluée</li><li>Un avis très négatif sur l&#x27;accueil, sans réponse visible</li><li>Plusieurs avis d&#x27;une ligne (« Correct ») qui tirent la note vers le bas</li></ul>
-<h2>Ce qu'on fait chez vous dès cette semaine</h2><ul class="act"><li>Réponse calme et professionnelle à l&#x27;avis négatif sur l&#x27;accueil</li><li>Carte NFC à la caisse : les clientes fidèles laissent enfin leur avis</li><li>Photos des réalisations (ongles, soins) sur la fiche</li></ul>
-<div class="offer"><h2>Formule Pro · 49 € par mois</h2><p>Premier mois à 29 €. Sans engagement de durée, un mois de préavis. Vous restez propriétaire de votre fiche : aucun mot de passe demandé.</p>
+<div class="top"><a class="logo" href="https://avise-paris.github.io/">Avisé</a><span>Audit offert · relevé le 25 novembre 2026</span></div>
+<p class="who">Zen maison de beauté · 2 Pl. du Général Leclerc, 94160 Saint-Mandé</p>
+<h1>Des clientes fidèles depuis dix ans écrivent qu&#x27;elles partent. Aucune n&#x27;a eu de réponse</h1>
+<div class="score"><div class="big">4,0<small>98 avis</small></div><div class="dist"><div class="db"><span>5</span><div><i style="width:67.3%"></i></div><b>66</b></div><div class="db"><span>4</span><div><i style="width:6.1%"></i></div><b>6</b></div><div class="db"><span>3</span><div><i style="width:5.1%"></i></div><b>5</b></div><div class="db"><span>2</span><div><i style="width:2.0%"></i></div><b>2</b></div><div class="db"><span>1</span><div><i style="width:19.4%"></i></div><b>19</b></div></div></div>
+<div class="kpis">
+<div class="k"><b>5<sup>e</sup>/5</b><span>dans votre quartier, sur votre métier</span></div>
+<div class="k"><b>0 / 50</b><span>de vos 50 derniers avis ont reçu une réponse</span></div>
+<div class="k"><b>0</b><span>nouvel avis ce dernier mois</span></div>
+<div class="k"><b>58</b><span>avis en moyenne chez vos voisins, contre 98 chez vous</span></div></div>
+<div class="read"><b>Notre lecture</b>Aucun avis ce dernier mois. Sur les 50 derniers, 17 ont 1 ou 2 étoiles, souvent de clientes fidèles depuis des années, et aucun n&#x27;a reçu de réponse. Une réponse peut encore les faire revenir.</div>
+<h2>Vous face à vos voisins</h2><p class="sub">Même métier, à moins de 800 m. Classés par note Google.</p><div class="cmp"><div class="cn">The Art of Beauty<small>à 780 m</small></div><div class="cb"><i style="width:100%"></i></div><div class="cr"><b>5,0</b><small>94 avis</small></div></div><div class="cmp"><div class="cn">Un Coin de Paradis<small>à 196 m</small></div><div class="cb"><i style="width:100%"></i></div><div class="cr"><b>5,0</b><small>17 avis</small></div></div><div class="cmp"><div class="cn">Glow Up By Laura<small>à 596 m</small></div><div class="cb"><i style="width:67%"></i></div><div class="cr"><b>4,5</b><small>51 avis</small></div></div><div class="cmp"><div class="cn">L&#x27;Institut Saint-Mandé<small>à 218 m</small></div><div class="cb"><i style="width:60%"></i></div><div class="cr"><b>4,4</b><small>32 avis</small></div></div><div class="cmp me"><div class="cn">Zen maison de beauté<small>vous</small></div><div class="cb"><i style="width:33%"></i></div><div class="cr"><b>4,0</b><small>98 avis</small></div></div>
+<h2>Vos avis du mois</h2><p class="sub">Du meilleur au moins bon.</p><p class="empty">Aucun avis publié ce dernier mois.</p>
+<h2>Les 3 avis qui vous coûtent le plus</h2><p class="sub">C'est ce que lisent en premier les clients qui hésitent.</p><div class="rv neg"><div class="rh"><span class="st" aria-label="1 étoile">★<i>★★★★</i></span><b>Céline</b><span>il y a 2 mois</span></div><p>Cliente depuis 10 ans… le travail reste bon, mais l&#x27;accueil n&#x27;est plus le même.</p><em>Sans réponse</em></div><div class="rv neg"><div class="rh"><span class="st" aria-label="1 étoile">★<i>★★★★</i></span><b>Lauriane</b><span>il y a 4 mois</span></div><p>Après 8 ans de fidélité j&#x27;arrête : mes demandes ne sont plus prises en compte.</p><em>Sans réponse</em></div><div class="rv neg"><div class="rh"><span class="st" aria-label="1 étoile">★<i>★★★★</i></span><b>Alison</b><span>il y a 5 mois</span></div><p>Avant le salon était super, maintenant on vous regarde à peine en entrant.</p><em>Sans réponse</em></div>
+<h2>Ce que vos clients aiment</h2><ul><li>Des clientes fidèles depuis des années, qui saluent la qualité des ongles</li><li>Un geste commercial remarqué : un ongle réparé gratuitement le lendemain</li><li>Le personnel est jugé très gentil par plusieurs avis</li></ul>
+<div class="goal"><div><b>4,4</b><span>votre objectif</span></div><div><b>≈ 66</b><span>nouveaux avis excellents nécessaires (estimation)</span></div><div><b>≈ 6 sem.</b><span>avec une carte sans contact au comptoir</span></div></div>
+<div class="offer"><h2>Formule Pro · 49 € par mois</h2><p>Premier mois à 29 €. Sans engagement de durée, un mois de préavis. Aucun mot de passe Google demandé : vous restez propriétaire de votre fiche.</p>
 <div class="btns"><a class="btn r" href="tel:+33783368970">Appeler Jules</a><a class="btn" href="https://wa.me/33783368970?text=Bonjour%20Jules%2C%20suite%20%C3%A0%20votre%20audit%20pour%20Zen%20maison%20de%20beaut%C3%A9%20%3A" target="_blank" rel="noopener">WhatsApp</a></div></div>
-<p class="note">Estimation établie à partir des données publiques de Google à la date du relevé. Avisé ne publie jamais de faux avis et ne demande jamais d'avis positifs uniquement : on aide vos vrais clients à donner leur avis.</p>
+<p class="note">Données publiques de Google Maps relevées le 25 novembre 2026 : note, nombre d'avis, extraits d'avis abrégés, réponses visibles du propriétaire. Avisé ne publie jamais de faux avis et ne demande jamais d'avis positifs uniquement.</p>
 </div></body></html>
