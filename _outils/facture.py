@@ -37,8 +37,8 @@ table{{width:100%;border-collapse:collapse;margin-top:4mm}}th,td{{padding:2.4mm 
 <div><small>Client</small><br><b>{e(ct.get('raison_sociale',''))}</b><br>{e(ct.get('adresse',''))}<br>{('SIRET '+e(ct['siret'])) if ct.get('siret') else ''}</div></div>
 <table><tr><th>Désignation</th><th class=r>Qté</th><th class=r>Prix unitaire</th><th class=r>Montant</th></tr>{rows}
 <tr class="tot"><td colspan=3 class=r>Total à payer</td><td class=r>{eur(total)}</td></tr></table>
-<div class="ment">TVA non applicable, article 293 B du CGI.<br>Prestation de services réalisée en {lib_mois}. Échéance de paiement : {ech.strftime('%d/%m/%Y')} (15 jours), par virement.<br>
-Coordonnées bancaires : {e(cfg.get('iban') or 'IBAN à ajouter dans config.json')}<br>
+<div class="ment">TVA non applicable, article 293 B du CGI.<br>Prestation de services réalisée en {lib_mois}. {('Paiement par prélèvement SEPA (mandat '+e(cl['mandat'])+'), au plus tôt le '+(today+datetime.timedelta(days=2)).strftime('%d/%m/%Y')+'. Cette facture vaut pré-notification.') if cl.get('mandat') else ('Échéance de paiement : '+ech.strftime('%d/%m/%Y')+' (15 jours), par virement.')}<br>
+{'' if cl.get('mandat') else 'Coordonnées bancaires : '+e(cfg.get('iban') or 'IBAN à ajouter dans config.json')+'<br>'}
 Pas d'escompte pour paiement anticipé. En cas de retard : pénalités égales à trois fois le taux d'intérêt légal et indemnité forfaitaire pour frais de recouvrement de 40 € (article L441-10 du Code de commerce).</div>
 </body></html>"""
 os.makedirs(os.path.join(HERE, "factures"), exist_ok=True)
