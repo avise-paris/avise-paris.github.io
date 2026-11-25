@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /espace/
+Disallow: /audit/
 Sitemap: https://avise-paris.github.io/sitemap.xml

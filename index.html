@@ -593,19 +593,23 @@ $('nb').addEventListener('input',calc);calc();
 
 
 // === RÉGLAGES À REMPLIR (une seule fois) ===
-// FORM_ENDPOINT : service FormSubmit (gratuit, sans compte) qui transmet les demandes d'audit à la boîte Avisé.
-// CONTACT : ton e-mail et ton téléphone pro, affichés en bas de page et utilisés si le formulaire n'est pas branché.
-const FORM_ENDPOINT="https://formsubmit.co/ajax/avise.paris.12@gmail.com";
+// WEB3_KEY : clé Web3Forms (publique, sans risque). Vide = repli sur FormSubmit.
+// CONTACT : e-mail et téléphone pro, affichés en bas de page et proposés si l'envoi échoue.
+const WEB3_KEY="";
+const FORM_ENDPOINT=WEB3_KEY?"https://api.web3forms.com/submit":"https://formsubmit.co/ajax/avise.paris.12@gmail.com";
 const CONTACT={email:"avise.paris.12@gmail.com",phone:"07 83 36 89 70"};
-if(CONTACT.email||CONTACT.phone){$('fcontact').innerHTML=[CONTACT.phone&&`<a href="tel:${CONTACT.phone.replace(/\s/g,'')}">${CONTACT.phone}</a>`,CONTACT.phone&&`<a href="https://wa.me/33${CONTACT.phone.replace(/\s/g,'').slice(1)}" target="_blank" rel="noopener">Écrire sur WhatsApp</a>`,CONTACT.email&&`<a href="mailto:${CONTACT.email}">${CONTACT.email}</a>`,'On passe vous voir en dehors du service.'].filter(Boolean).join('<br>');}
+const WA="https://wa.me/33"+CONTACT.phone.replace(/\s/g,'').slice(1);
+if(CONTACT.email||CONTACT.phone){$('fcontact').innerHTML=[CONTACT.phone&&`<a href="tel:${CONTACT.phone.replace(/\s/g,'')}">${CONTACT.phone}</a>`,CONTACT.phone&&`<a href="${WA}" target="_blank" rel="noopener">Écrire sur WhatsApp</a>`,CONTACT.email&&`<a href="mailto:${CONTACT.email}">${CONTACT.email}</a>`,'On passe vous voir en dehors du service.'].filter(Boolean).join('<br>');}
 $('auditf').addEventListener('submit',async e=>{e.preventDefault();const f=e.target,n=$('n').value.trim(),ok=$('ok'),btn=f.querySelector('button[type=submit],button:not([type])');ok.style.display='block';
- if(!FORM_ENDPOINT){
-  if(CONTACT.email){const body=`Établissement : ${n}%0AVille : ${$('v').value}%0AType : ${$('t').value}%0AContact : ${$('c').value}%0A%0A${encodeURIComponent($('m').value)}`;location.href=`mailto:${CONTACT.email}?subject=${encodeURIComponent('Demande d\'audit gratuit : '+n)}&body=${body}`;ok.textContent="Votre messagerie s'ouvre avec votre demande prête : il ne reste qu'à l'envoyer.";return;}
-  ok.textContent=`Merci ! Votre demande pour « ${n} » est notée sur cette page, mais l'envoi en ligne n'est pas encore activé : rien n'a été transmis pour l'instant.`;return;}
+ const txt=`Demande d'audit gratuit\nÉtablissement : ${n}\nVille : ${$('v').value}\nType : ${$('t').value}\nContact : ${$('c').value}${$('m').value?'\nMessage : '+$('m').value:''}`;
+ const fallback=msg=>{ok.textContent='';const p=document.createElement('p');p.textContent=msg;const w=document.createElement('a');w.className='btn';w.href=WA+'?text='+encodeURIComponent(txt);w.target='_blank';w.rel='noopener';w.textContent='Envoyer sur WhatsApp';
+  const m=document.createElement('a');m.className='btn ghost';m.href=`mailto:${CONTACT.email}?subject=${encodeURIComponent("Demande d'audit gratuit : "+n)}&body=${encodeURIComponent(txt)}`;m.textContent='Envoyer par e-mail';
+  const d=document.createElement('div');d.style.cssText='display:flex;gap:10px;flex-wrap:wrap;margin-top:10px';d.append(w,m);ok.append(p,d);};
  btn.disabled=true;ok.textContent='Envoi en cours…';
- try{const ac=new AbortController(),to=setTimeout(()=>ac.abort(),12000);const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f),signal:ac.signal});clearTimeout(to);
+ try{const fd=new FormData(f);if(WEB3_KEY){fd.append('access_key',WEB3_KEY);fd.append('subject',"Nouvelle demande d'audit Avisé : "+n);fd.append('from_name','Site Avisé');fd.delete('_honey');fd.append('botcheck','');}
+  const ac=new AbortController(),to=setTimeout(()=>ac.abort(),10000);const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:fd,signal:ac.signal});clearTimeout(to);
   if(!r.ok)throw 0;ok.textContent=`Merci ! Votre demande d'audit pour « ${n} » est bien partie. On vous recontacte sous 48 h pour fixer un passage en dehors du service.`;f.reset();}
- catch(_){ok.textContent="L'envoi en ligne n'a pas abouti : votre messagerie s'ouvre avec la demande déjà remplie, il ne reste qu'à l'envoyer.";const body=`Établissement : ${n}%0AVille : ${$('v').value}%0AType : ${$('t').value}%0AContact : ${$('c').value}%0A%0A${encodeURIComponent($('m').value)}`;location.href=`mailto:${CONTACT.email}?subject=${encodeURIComponent('Demande d\'audit gratuit : '+n)}&body=${body}`;}
+ catch(_){fallback("L'envoi en ligne n'a pas abouti. Votre demande est prête : envoyez-la en un geste.");}
  finally{btn.disabled=false;}});
 
 const faqs=[["Combien de temps ça me prend, à moi ?","Deux minutes le jour du rendez-vous pour nous ajouter comme gestionnaire de votre fiche, puis quelques secondes par SMS pour valider nos premières réponses. Ensuite, presque rien : vous lisez votre rapport une fois par mois."],
